@@ -1,0 +1,18 @@
+
+body {
+    background: #1d2630;
+}
+
+*{
+    color: #fff;
+}
+table tbody {
+    background-color: #1d2630;
+}
+
+#Update{
+    display: none;
+}
+
+
+
