@@ -1,181 +1,178 @@
-// This function is used to validate a form before adding data to the list
+// Esta função é usada para validar um formulário antes de adicionar dados à lista
 function validateForm(){
-    // Get the values of form inputs by their IDs
-    let name = document.getElementById("name").value;
-    let age = document.getElementById("age").value;
-    let address = document.getElementById("address").value;
+    // Obter os valores dos campos do formulário pelos seus IDs
+    let nome = document.getElementById("nome").value;
+    let matricula = document.getElementById("matricula").value;
+    let curso = document.getElementById("curso").value;
     let email = document.getElementById("email").value;
     
-    // Check if the 'name' field is empty
-    if(name == ""){
-        alert("Name is required!"); // Show an alert message
-        return false; // Prevent form submission if validation fails
+    // Verificar se o campo 'nome' está vazio
+    if(nome == ""){
+        alert("Nome é obrigatório!"); // Mostrar uma mensagem de alerta
+        return false; // Impedir o envio do formulário se a validação falhar
     }
 
-    // Check if the 'age' field is empty
-    if(age == ""){
-        alert("Age is required!"); // Show an alert message
-        return false; // Prevent form submission if validation fails
-    } else if(age < 1){
-        alert("Age must not be 0 or less!"); // Show an alert message
-        return false; // Prevent form submission if validation fails
-    }
+    // Verificar se o campo 'matricula' está vazio
+    if(matricula == ""){
+        alert("Matrícula é obrigatória!"); // Mostrar uma mensagem de alerta
+        return false; // Impedir o envio do formulário se a validação falhar
+    } 
 
-    // Check if the 'email' field is empty and contains '@'
+    // Verificar se o campo 'email' está vazio e contém '@'
     if(email == ""){
-        alert("E-mail is required!"); // Show an alert message
-        return false; // Prevent form submission if validation fails
+        alert("E-mail é obrigatório!"); // Mostrar uma mensagem de alerta
+        return false; // Impedir o envio do formulário se a validação falhar
     } else if(!email.includes("@")){
-        alert("Invalid E-mail address!"); // Show an alert message
-        return false; // Prevent form submission if validation fails
+        alert("Endereço inválido!"); // Mostrar uma mensagem de alerta
+        return false; // Impedir o envio do formulário se a validação falhar
     }
 
-    // If all validation passes, return true to allow form submission
+    // Se todas as validações passarem, retornar true para permitir o envio do formulário
     return true;
 } 
 
-// This function is used to display data in a table
+// Esta função é usada para exibir dados em uma tabela
 function showData(){
     let peopleList;
 
-    // Check if there is data in local storage, if not, initialize an empty array
+    // Verificar se há dados no armazenamento local; se não, inicializar um array vazio
     if(localStorage.getItem("peopleList") == null){
         peopleList = [];
     } else {
-        // If there is data, parse it from JSON format
+        // Se houver dados, analisá-los no formato JSON
         peopleList = JSON.parse(localStorage.getItem("peopleList"));
     }
 
     let html = "";
     peopleList.forEach(function (element, index) {
         html += "<tr>";
-        html += "<td>" + element.name + "</td>";
-        html += "<td>" + element.age + "</td>";
+        html += "<td>" + element.nome + "</td>";
+        html += "<td>" + element.matricula + "</td>";
         html += "<td>" + element.email + "</td>";
-        html += "<td>" + element.address + "</td>";
+        html += "<td>" + element.curso + "</td>";
         html += 
             '<td><button onclick="deleteData('+
-            index+')" class="btn btn-danger">Delete</button><button onclick="updateData('+
-            index+')" class="btn btn-warning m-2">Edit</button></td>';
+            index+')" class="btn btn-danger">Excluir</button><button onclick="updateData('+
+            index+')" class="btn btn-warning m-2">Editar</button></td>';
         html+="</tr>";
     });
 
-    // Display the generated HTML in the table body
+    // Exibir o HTML gerado no corpo da tabela
     document.querySelector("#crudTable tbody").innerHTML = html;
 }
 
-// This code executes when the window (page) loads
+// Este código é executado quando a janela (página) é carregada
 window.onload = showData();
 
-// This function adds data to the list when the form is submitted
+// Esta função adiciona dados à lista quando o formulário é enviado
 function AddData(){
-    // Check if the form is valid by calling the validateForm function
+    // Verificar se o formulário é válido chamando a função validateForm
     if(validateForm() == true){
-        // Get the values from the form inputs
-        let name = document.getElementById("name").value;
-        let age = document.getElementById("age").value;
-        let address = document.getElementById("address").value;
+        // Obter os valores dos campos do formulário
+        let nome = document.getElementById("nome").value;
+        let matricula = document.getElementById("matricula").value;
+        let curso = document.getElementById("curso").value;
         let email = document.getElementById("email").value;
 
         let peopleList;
 
-        // Check if there is data in local storage, if not, initialize an empty array
+        // Verificar se há dados no armazenamento local; se não, inicializar um array vazio
         if(localStorage.getItem("peopleList") == null){
             peopleList = [];
         } else {
-            // If there is data, parse it from JSON format
+            // Se houver dados, analisá-los no formato JSON
             peopleList = JSON.parse(localStorage.getItem("peopleList"));
         }
 
-        // Add a new object to the peopleList array
+        // Adicionar um novo objeto à matriz peopleList
         peopleList.push({
-            name: name,
-            age: age, 
-            address: address, 
+            nome: nome,
+            matricula: matricula, 
+            curso: curso, 
             email: email
         });
 
-        // Store the updated data back in local storage
+        // Armazenar os dados atualizados de volta no armazenamento local
         localStorage.setItem("peopleList", JSON.stringify(peopleList));
 
-        // Display the updated data in the table
+        // Exibir os dados atualizados na tabela
         showData();
 
-        // Clear the form fields
-        document.getElementById("name").value = "";
-        document.getElementById("age").value = "";
-        document.getElementById("address").value = "";
+        // Limpar os campos do formulário
+        document.getElementById("nome").value = "";
+        document.getElementById("matricula").value = "";
+        document.getElementById("curso").value = "";
         document.getElementById("email").value = "";  
     }  
 }
 
-// This function deletes data from the list
+// Esta função exclui dados da lista
 function deleteData(index){
     let peopleList;
 
-    // Check if there is data in local storage, if not, initialize an empty array
+    // Verificar se há dados no armazenamento local; se não, inicializar um array vazio
     if(localStorage.getItem("peopleList") == null){
         peopleList = [];
     } else {
-        // If there is data, parse it from JSON format
+        // Se houver dados, analisá-los no formato JSON
         peopleList = JSON.parse(localStorage.getItem("peopleList"));
     }
 
-    // Remove the data item at the specified index from the array
+    // Remover o item de dados no índice especificado da matriz
     peopleList.splice(index, 1);
 
-    // Store the updated data back in local storage
+    // Armazenar os dados atualizados de volta no armazenamento local
     localStorage.setItem("peopleList", JSON.stringify(peopleList));
 
-    // Display the updated data in the table
+    // Exibir os dados atualizados na tabela
     showData();
 }
 
-// This function is used to update data in the list
+// Esta função é usada para atualizar dados na lista
 function updateData(index) {
-    // Hide the Submit button and show the Update button for editing
+    // Ocultar o botão Enviar e mostrar o botão Atualizar para edição
     document.getElementById("Submit").style.display = "none";
     document.getElementById("Update").style.display = "block";
 
     let peopleList;
 
-    // Check if there is data in local storage, if not, initialize an empty array
+    // Verificar se há dados no armazenamento local; se não, inicializar um array vazio
     if (localStorage.getItem("peopleList") == null) {
         peopleList = [];
     } else {
-        // If there is data, parse it from JSON format
+        // Se houver dados, analisá-los no formato JSON
         peopleList = JSON.parse(localStorage.getItem("peopleList"));
     }
 
-    // Populate the form fields with data for editing
-    document.getElementById("name").value = peopleList[index].name;
-    document.getElementById("age").value = peopleList[index].age;
-    document.getElementById("address").value = peopleList[index].address;
+    // Preencher os campos do formulário com dados para edição
+    document.getElementById("nome").value = peopleList[index].nome;
+    document.getElementById("matricula").value = peopleList[index].matricula;
+    document.getElementById("curso").value = peopleList[index].curso;
     document.getElementById("email").value = peopleList[index].email;
 
-    // Add an event listener to the Update button
+    // Adicionar um ouvinte de eventos ao botão Atualizar
     document.getElementById("Update").onclick = function () {
-        // Check if the form is valid by calling the validateForm function
+        // Verificar se o formulário é válido chamando a função validateForm
         if (validateForm() == true) {
-            // Update the data in the peopleList array
-            peopleList[index].name = document.getElementById("name").value;
-            peopleList[index].age = document.getElementById("age").value;
-            peopleList[index].address = document.getElementById("address").value;
+            // Atualizar os dados na matriz peopleList
+            peopleList[index].nome = document.getElementById("nome").value;
+            peopleList[index].matricula = document.getElementById("matricula").value;
+            peopleList[index].curso = document.getElementById("curso").value;
             peopleList[index].email = document.getElementById("email").value;
 
-            // Store the updated data back in local storage
+            // Armazenar os dados atualizados de volta no armazenamento local
             localStorage.setItem("peopleList", JSON.stringify(peopleList));
 
-            // Display the updated data in the table
+            // Exibir os dados atualizados na tabela
             showData();
 
-            // Clear the form fields
-            document.getElementById("name").value = "";
-            document.getElementById("age").value = "";
-            document.getElementById("address").value = "";
+            // Limpar os campos do formulário
+            document.getElementById("nome").value = "";
+            document.getElementById("matricula").value = "";
+            document.getElementById("curso").value = "";
             document.getElementById("email").value = "";
 
-            // Hide the Update button and show the Submit button
+            // Ocultar o botão Atualizar e mostrar o botão Enviar
             document.getElementById("Submit").style.display = "block";
             document.getElementById("Update").style.display = "none";
         }

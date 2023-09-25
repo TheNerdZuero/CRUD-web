@@ -1,95 +1,95 @@
-<!DOCTYPE html> <!-- This declares the document type as HTML. -->
-<html lang="en"> <!-- This defines the language of the document as English. -->
-    <head> <!-- This is the head section of the HTML document. It contains meta-information and external resources. -->
-        <meta charset="UTF-8"> <!-- This specifies the character encoding for the document as UTF-8. -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- This sets the compatibility mode for Internet Explorer. -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This sets the viewport properties for responsive design. -->
-        <title>CRUD Application</title> <!-- This sets the title of the web page displayed in the browser tab. -->
+<!DOCTYPE html> <!-- Isso declara o tipo de documento como HTML. -->
+<html lang="pt-br"> <!-- Isso define o idioma do documento como Português do Brasil. -->
+    <head> <!-- Esta é a seção de cabeçalho do documento HTML. Contém metainformações e recursos externos. -->
+        <meta charset="UTF-8"> <!-- Isso especifica a codificação de caracteres do documento como UTF-8. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Isso define o modo de compatibilidade para o Internet Explorer. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Isso define as propriedades de visualização para design responsivo. -->
+        <title>Aplicação CRUD</title> <!-- Isso define o título da página da web exibido na guia do navegador. -->
         <!-- Bootstrap -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
-        /> <!-- This links to an external Bootstrap CSS file for styling. -->
+        /> <!-- Isso faz o link para um arquivo CSS externo do Bootstrap para estilização. -->
 
-        <!-- Custom CSS Styles -->
-        <link rel="stylesheet" href="style.css" /> <!-- This links to a custom CSS file for additional styling. -->
+        <!-- Estilos CSS Personalizados -->
+        <link rel="stylesheet" href="style.css" /> <!-- Isso faz o link para um arquivo CSS personalizado para estilização adicional. -->
     </head>
-    <body> <!-- This is the body section of the HTML document. It contains the visible content of the web page. -->
-        <div class="container"> <!-- This div creates a container for the page content. -->
-            <h2 class="mt-5 mb-5">CRUD Application</h2> <!-- This is a heading with margin classes for spacing. -->
-            <div class="mb-5"> <!-- This div contains a form for user input. -->
-                <div class="row"> <!-- This div creates a row for form elements. -->
-                    <div class="form-group col-md-6 mb-3"> <!-- This div creates a form group for a name input field. -->
-                        <label for="name">Name</label> <!-- This is a label for the name input field. -->
+    <body> <!-- Esta é a seção de corpo do documento HTML. Contém o conteúdo visível da página da web. -->
+        <div class="container"> <!-- Este div cria um contêiner para o conteúdo da página. -->
+            <h2 class="mt-5 mb-5">Cadastro de Aluno</h2> <!-- Este é um título com classes de margem para espaçamento. -->
+            <div class="mb-5"> <!-- Este div contém um formulário para entrada do usuário. -->
+                <div class="row"> <!-- Este div cria uma linha para os elementos do formulário. -->
+                    <div class="form-group col-md-6 mb-3"> <!-- Este div cria um grupo de formulário para um campo de entrada de nome. -->
+                        <label for="nome">Nome</label> <!-- Este é um rótulo para o campo de entrada de nome. -->
                         <input
                             type="text"
-                            name="name"
+                            name="nome"
                             class="form-control"
-                            id="name"
-                            placeholder="Enter Name"
-                        /> <!-- This is a text input field for entering a name. -->
+                            id="nome"
+                            placeholder="Insira o Nome"
+                        /> <!-- Este é um campo de entrada de texto para inserir um nome. -->
                     </div>
 
-                    <div class="form-group col-md-6 mb-3"> <!-- This div creates a form group for an age input field. -->
-                        <label for="age">Age</label> <!-- This is a label for the age input field. -->
+                    <div class="form-group col-md-6 mb-3"> <!-- Este div cria um grupo de formulário para um campo de entrada de matrícula. -->
+                        <label for="matricula">Matrícula</label> <!-- Este é um rótulo para o campo de entrada de matrícula. -->
                         <input
                             type="number"
-                            name="age"
+                            name="matricula"
                             class="form-control"
-                            id="age"
-                            placeholder="Enter Age"
-                        /> <!-- This is a number input field for entering an age. -->
+                            id="matricula"
+                            placeholder="Insira a Matrícula"
+                        /> <!-- Este é um campo de entrada numérica para inserir uma matrícula. -->
                     </div>
 
-                    <div class="form-group col-md-6 mb-3"> <!-- This div creates a form group for an address input field. -->
-                        <label for="address">Address</label> <!-- This is a label for the address input field. -->
+                    <div class="form-group col-md-6 mb-3"> <!-- Este div cria um grupo de formulário para um campo de entrada de curso. -->
+                        <label for="curso">Curso</label> <!-- Este é um rótulo para o campo de entrada de curso. -->
                         <input
                             type="text"
-                            name="address"
+                            name="curso"
                             class="form-control"
-                            id="address"
-                            placeholder="Enter Address"
-                        /> <!-- This is a text input field for entering an address. -->
+                            id="curso"
+                            placeholder="Insira o curso"
+                        /> <!-- Este é um campo de entrada de texto para inserir um curso. -->
                     </div>
 
-                    <div class="form-group col-md-6 mb-3"> <!-- This div creates a form group for an email input field. -->
-                        <label for="email">E-mail</label> <!-- This is a label for the email input field. -->
+                    <div class="form-group col-md-6 mb-3"> <!-- Este div cria um grupo de formulário para um campo de entrada de email. -->
+                        <label for="email">E-mail</label> <!-- Este é um rótulo para o campo de entrada de email. -->
                         <input
                             type="email"
                             name="email"
                             class="form-control"
                             id="email"
-                            placeholder="Enter E-mail"
-                        /> <!-- This is an email input field for entering an email address. -->
+                            placeholder="Insira o E-mail"
+                        /> <!-- Este é um campo de entrada de email para inserir um endereço de email. -->
                     </div>
 
-                    <div class="col-lg-12 mt-5"> <!-- This div contains buttons for adding and updating data. -->
-                        <button class="btn btn-success" id="Submit" onclick="AddData()">Add Data</button> <!-- Button to add data. -->
-                        <button class="btn btn-primary" id="Update" onclick="AddData()">Update</button> <!-- Button to update data. -->
+                    <div class="col-lg-12 mt-5"> <!-- Este div contém botões para adicionar e atualizar dados. -->
+                        <button class="btn btn-success" id="Submit" onclick="AddData()">Adicionar Dados</button> <!-- Botão para adicionar dados. -->
+                        <button class="btn btn-primary" id="Update" onclick="AddData()">Atualizar</button> <!-- Botão para atualizar dados. -->
                     </div>
                 </div>
             </div>
-            <hr> <!-- This creates a horizontal line as a visual separator. -->
-            <div class="row mt-5"> <!-- This div contains a table for displaying data. -->
-                <div class="col-12"> <!-- This div spans the entire width of the container. -->
-                    <table class="table table-bordered" id="crudTable"> <!-- This creates an HTML table. -->
-                        <thead> <!-- This is the table header section. -->
-                            <tr> <!-- This is a row within the table header. -->
-                                <th>Name</th> <!-- Table column header for Name. -->
-                                <th>Age</th> <!-- Table column header for Age. -->
-                                <th>Address</th> <!-- Table column header for Address. -->
-                                <th>E-mail</th> <!-- Table column header for E-mail. -->
-                                <th>Actions</th> <!-- Table column header for Actions. -->
+            <hr> <!-- Isso cria uma linha horizontal como um separador visual. -->
+            <div class="row mt-5"> <!-- Este div contém uma tabela para exibir dados. -->
+                <div class="col-12"> <!-- Este div abrange toda a largura do contêiner. -->
+                    <table class="table table-bordered" id="crudTable"> <!-- Isso cria uma tabela HTML. -->
+                        <thead> <!-- Esta é a seção de cabeçalho da tabela. -->
+                            <tr> <!-- Esta é uma linha dentro do cabeçalho da tabela. -->
+                                <th>Nome</th> <!-- Cabeçalho da coluna da tabela para Nome. -->
+                                <th>Matrícula</th> <!-- Cabeçalho da coluna da tabela para Matrícula. -->
+                                <th>Curso</th> <!-- Cabeçalho da coluna da tabela para Curso. -->
+                                <th>E-mail</th> <!-- Cabeçalho da coluna da tabela para E-mail. -->
+                                <th>Ações</th> <!-- Cabeçalho da coluna da tabela para Ações. -->
                             </tr>
                         </thead>
-                        <tbody></tbody> <!-- This is the table body section (empty initially). -->
+                        <tbody></tbody> <!-- Esta é a seção do corpo da tabela (inicialmente vazia). -->
                     </table>
                 </div>
             </div>
         </div>
 
-        <script src="script.js"></script> <!-- This includes an external JavaScript file for dynamic functionality. -->
+        <script src="script.js"></script> <!-- Isso inclui um arquivo JavaScript externo para funcionalidade dinâmica. -->
     </body>
 </html>
