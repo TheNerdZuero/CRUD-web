@@ -48,8 +48,8 @@ function showData(){
         html += "<tr>";
         html += "<td>" + element.nome + "</td>";
         html += "<td>" + element.matricula + "</td>";
-        html += "<td>" + element.email + "</td>";
         html += "<td>" + element.curso + "</td>";
+        html += "<td>" + element.email + "</td>";
         html += 
             '<td><button onclick="deleteData('+
             index+')" class="btn btn-danger">Excluir</button><button onclick="updateData('+
